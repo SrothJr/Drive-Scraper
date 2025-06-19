@@ -1,0 +1,26 @@
+{
+  "name": "drive-scraper",
+  "version": "1.0.0",
+  "description": "This is a Discord bot (can be integrated with other things) that scans for changes made to a drive and sends update notification to a discord cahnnel.",
+  "type": "module",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SrothJr/Drive-Scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SrothJr/Drive-Scraper/issues"
+  },
+  "homepage": "https://github.com/SrothJr/Drive-Scraper#readme",
+  "dependencies": {
+    "discord.js": "^14.20.0",
+    "dotenv": "^16.5.0",
+    "googleapis": "^150.0.1"
+  }
+}

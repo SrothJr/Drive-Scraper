@@ -134,7 +134,7 @@ async function saveFolderObjectToFile(
   try {
     const jsonData = JSON.stringify(folderObject, null, 2);
     await writeFile(fileName, jsonData);
-    console.log(`✅ Folder structure saved to ${fileName}`); // Added for clarity
+    // console.log(`✅ Folder structure saved to ${fileName}`); // uncomment this for clarity
   } catch (error) {
     console.error("❌ Error writing JSON file:", error.message);
   }

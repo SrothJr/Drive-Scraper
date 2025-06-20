@@ -7,10 +7,9 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { writeFile, readFile } from "fs/promises";
-// +++ Start of Change +++
+
 import { access } from "fs/promises"; // Import access for checking file existence
 import { constants } from "fs"; // Import constants for fs.access modes
-// +++ End of Change +++
 
 // Discord Stuff
 import { Client, GatewayIntentBits } from "discord.js";
@@ -78,22 +77,6 @@ const discordClient = new Client({
 });
 
 const TARGET_FOLDER_ID = process.env.DOOMED_THESIS_FOLDER_ID;
-
-// Testing connections : Remove in production
-// console.log("--- Environment Variables Loaded ---");
-// console.log("CLIENT_ID:", CLIENT_ID ? "Loaded" : "MISSING");
-// console.log("CLIENT_SECRET:", CLIENT_SECRET ? "Loaded" : "MISSING");
-// console.log("REDIRECT_URI:", REDIRECT_URI ? "Loaded" : "MISSING");
-// console.log("REFRESH_TOKEN:", REFRESH_TOKEN ? "Loaded" : "MISSING");
-// console.log("DISCORD_TOKEN:", DISCORD_TOKEN ? "Loaded" : "MISSING");
-// console.log("CHANNEL_ID:", CHANNEL_ID ? "Loaded" : "MISSING");
-// // console.log(
-// //   "DOOMED_THESIS_FOLDER_ID:",
-// //   DOOMED_THESIS_FOLDER_ID ? "Loaded" : "MISSING"
-// // );
-// console.log("------------------------------------");
-
-// Testing end
 
 async function sendDiscordMessage(content) {
   const channel = await discordClient.channels.fetch(CHANNEL_ID);
@@ -204,7 +187,6 @@ function compareStructures(oldObj, newObj, path = "") {
 }
 
 async function compareDriveStructures() {
-  // +++ Start of Change +++
   let oldData;
   const oldFolderPath = "oldFolder.json";
 
@@ -231,7 +213,6 @@ async function compareDriveStructures() {
       return; // Exit on other errors
     }
   }
-  // +++ End of Change +++
 
   const newData = JSON.parse(await readFile("newFolder.json", "utf-8"));
 
@@ -261,23 +242,21 @@ discordClient.once("ready", async () => {
   if (!isDriveReady) {
     console.error("🚨 Drive API not ready. Aborting further Drive operations.");
     // You might want to exit the process here or disable Drive-related features
-    // process.exit(1); // Uncomment this if you want to exit on failure
+    process.exit(1); // comment this if you dont want to exit on failure
     return; // Stop execution if Drive isn't initialized
   }
-  // +++ Start of Change +++
-  // Always build newFolder.json before comparing
+  // building newFolder.json for comparing
   const newMother = await buildFolderTree(TARGET_FOLDER_ID, "Doomed Thesis");
   await saveFolderObjectToFile(newMother, "newFolder.json");
-  // +++ End of Change +++
 
-  await compareDriveStructures(); // This function now handles initial file generation
+  await compareDriveStructures(); // This function handles initial file generation and comparison
 
   setInterval(async () => {
     console.log("🔄 Running scheduled drive structure check..."); // Added for clarity on intervals
     const newMother = await buildFolderTree(TARGET_FOLDER_ID, "Doomed Thesis");
     await saveFolderObjectToFile(newMother, "newFolder.json");
     await compareDriveStructures();
-  }, 5 * 1000); // Check every 5 seconds (5000 milliseconds)
+  }, 5 * 1000); // Check every 5 seconds (5 * 1000 = 5000 milliseconds = 5 seconds)
 });
 
 discordClient.login(DISCORD_TOKEN);

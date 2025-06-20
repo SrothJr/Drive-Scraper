@@ -2,6 +2,10 @@
 
 This is a Discord bot (can be integrated with other things) that scans for changes made to a drive and sends update notification to a discord cahnnel.
 
+### Who is it for?
+
+- If you're someone working in a group for any type of project, research or study purpose and use a central google drive folder for everyone to share their resources and worked files with everyone then this program can be benificial for you.
+
 ### What it is?
 
 - It is a small node.js based program.

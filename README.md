@@ -23,4 +23,8 @@ This is a Discord bot (can be integrated with other things) that scans for chang
 - You need to install node.js with npm to your machine.
 - go to your desired location in your computer.
 - open terminal/cmd on that location, and paste `git clone https://github.com/SrothJr/Drive-Scraper.git`
-- After successful cloning, paste and run in your terminal the following lines: <br> `npm init -y` <br> `npm i googleapis` <br> `npm i discord.js`
+- After successful cloning, paste and run in your terminal the following line: <br> `npm install`
+- Now navigate through start.js and find the placeholders required keys (_CLIENT_ID, CLIENT_SECRET_KEY, etc_) and populate them with your data.
+- Don't forget to add your **DRIVE FOLDER ID** accordingly. (I might add a separate function to get the FOLDER ID by name later on).
+- Play with the `setInterval` time settings to optimize it according to your liking.
+- Run the program, that's it.

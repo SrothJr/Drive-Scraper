@@ -256,7 +256,7 @@ discordClient.once("ready", async () => {
     const newMother = await buildFolderTree(TARGET_FOLDER_ID, "Doomed Thesis");
     await saveFolderObjectToFile(newMother, "newFolder.json");
     await compareDriveStructures();
-  }, 5 * 1000); // Check every 5 seconds (5 * 1000 = 5000 milliseconds = 5 seconds)
+  }, 60 * 1000); // Check every 5 seconds (5 * 1000 = 5000 milliseconds = 5 seconds)
 });
 
 discordClient.login(DISCORD_TOKEN);

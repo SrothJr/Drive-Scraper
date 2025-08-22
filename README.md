@@ -31,4 +31,4 @@ This is a Discord bot (can be integrated with other things) that scans for chang
 - Now navigate through start.js and find the placeholders required keys (_CLIENT_ID, CLIENT_SECRET_KEY, etc_) and populate them with your data.
 - Don't forget to add your **DRIVE FOLDER ID** accordingly. (I might add a separate function to get the FOLDER ID by name later on).
 - Play with the `setInterval` time settings to optimize it according to your liking.
-- Run the program, that's it.
+- Run the program using `node start.js` in the terminal, that's it.
